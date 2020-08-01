@@ -1,3 +1,7 @@
+# Custom filters
+build*/
+
+# CMake filters
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
