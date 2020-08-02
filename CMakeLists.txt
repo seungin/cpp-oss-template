@@ -18,6 +18,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Includes
 include_directories(Includes)
+include_directories(Libraries/doctest/doctest)
 
 # Compile options
 include(CMake/CompileOptions.cmake)
@@ -31,4 +32,6 @@ endif()
 set(CMAKE_MACOSX_RPATH ON)
 
 # Project modules
+add_subdirectory(Libraries/doctest)
 add_subdirectory(Sources/cpp-oss-template)
+add_subdirectory(Tests/UnitTests)
