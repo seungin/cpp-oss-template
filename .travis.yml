@@ -1,0 +1,43 @@
+# this file refers to below link.
+# ; https://docs.travis-ci.com/user/languages/cpp/
+# ; https://docs.travis-ci.com/user/customizing-the-build/
+
+language: cpp
+
+matrix:
+  include:
+    # works on ubuntu with gcc
+    - name: ubuntu 20.04 + gcc-9
+      os: linux
+      dist: focal
+      compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-9
+      env:
+        - MATRIX_EVAL="CC=gcc-9 && CXX=g++-9"
+      script:
+        - sh Scripts/travis_build.sh
+
+    # works on ubuntu with clang
+    - name: ubuntu 20.04 + clang-10
+      os: linux
+      dist: focal
+      compiler: clang
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-10
+          packages:
+            - clang-10
+      env:
+        - MATRIX_EVAL="CC=clang-10 && CXX=clang++-10"
+      script:
+        - sh Scripts/travis_build.sh
+
+before_install:
+  - eval "${MATRIX_EVAL}"
