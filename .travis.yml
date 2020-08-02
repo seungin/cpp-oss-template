@@ -23,7 +23,7 @@ matrix:
         - sh Scripts/travis_build.sh
 
     # works on ubuntu with clang
-    - name: ubuntu 20.04 + clang-10
+    - name: ubuntu 20.04 + clang-10 + coverage
       os: linux
       dist: focal
       compiler: clang
@@ -37,7 +37,7 @@ matrix:
       env:
         - MATRIX_EVAL="CC=clang-10 && CXX=clang++-10"
       script:
-        - sh Scripts/travis_build.sh
+        - sh Scripts/travis_build_codecov.sh
 
 before_install:
   - eval "${MATRIX_EVAL}"
