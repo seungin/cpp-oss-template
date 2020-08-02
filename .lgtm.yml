@@ -1,0 +1,16 @@
+# this file refers to below link.
+# ; https://lgtm.com/help/lgtm/lgtm.yml-configuration-file
+
+extraction:
+  cpp:
+    prepare:
+      packages:
+        - g++-9
+    configure:
+      command:
+        - mkdir -p $LGTM_SRC/build
+        - cd $LGTM_SRC/build
+        - cmake ..
+    index:
+      build_command:
+        - cmake --build .
